@@ -1,0 +1,71 @@
+-- Definindo as sagas como uma tabela de tabelas (missões dentro das sagas)
+local sagas = {
+    {
+        nome = "Saga do Início",
+        missões = {
+            {nome = "Missão 1", descrição = "Complete a primeira tarefa para começar sua jornada."},
+            {nome = "Missão 2", descrição = "Encontre o item misterioso no bosque."},
+            {nome = "Missão 3", descrição = "Derrote o monstro da floresta."}
+        }
+    },
+    {
+        nome = "Saga do Herói",
+        missões = {
+            {nome = "Missão 1", descrição = "Treine suas habilidades de combate."},
+            {nome = "Missão 2", descrição = "Recupere o artefato perdido no templo."},
+            {nome = "Missão 3", descrição = "Enfrente o líder dos inimigos."}
+        }
+    },
+    {
+        nome = "Saga Final",
+        missões = {
+            {nome = "Missão 1", descrição = "Encontre a espada lendária."},
+            {nome = "Missão 2", descrição = "Vença os exércitos das trevas."},
+            {nome = "Missão 3", descrição = "Derrote o chefe final para salvar o mundo."}
+        }
+    }
+}
+
+-- Função para mostrar as missões de uma saga
+local function mostrarMissões(saga)
+    print("Missões da " .. saga.nome .. ":")
+    for i, missão in ipairs(saga.missões) do
+        print(i .. ". " .. missão.nome .. " - " .. missão.descrição)
+    end
+end
+
+-- Função para iniciar uma saga
+local function iniciarSaga(sagaId)
+    local sagaEscolhida = sagas[sagaId]
+    if sagaEscolhida then
+        print("Iniciando a " .. sagaEscolhida.nome .. "...")
+        mostrarMissões(sagaEscolhida)
+    else
+        print("Saga não encontrada.")
+    end
+end
+
+-- Função para concluir uma missão de uma saga
+local function concluirMissão(sagaId, missãoId)
+    local sagaEscolhida = sagas[sagaId]
+    local missãoEscolhida = sagaEscolhida.missões[missãoId]
+    
+    if missãoEscolhida then
+        print("Missão concluída: " .. missãoEscolhida.nome)
+        -- Aqui você pode adicionar a lógica para desbloquear missões futuras ou recompensas
+    else
+        print("Missão não encontrada.")
+    end
+end
+
+-- Iniciar a Saga do Início
+iniciarSaga(1)
+
+-- Completar a primeira missão da Saga do Início
+concluirMissão(1, 1)
+
+-- Iniciar a Saga do Herói
+iniciarSaga(2)
+
+-- Completar a segunda missão da Saga do Herói
+concluirMissão(2, 2)
